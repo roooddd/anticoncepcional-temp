@@ -1,0 +1,153 @@
+:root {
+  --c1: #590D22;
+  --c2: #800F2F;
+  --c3: #A4133C;
+  --c4: #C9184A;
+  --c5: #FF4D6D;
+  --c6: #FF758F;
+  --c7: #FF8FA3;
+  --c8: #FFB3C1;
+  --c9: #FFCCD5;
+  --c10: #FFF0F3;
+}
+
+/* RESET IMPORTANTE */
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: var(--c10);
+  color: var(--c1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+.container {
+  text-align: center;
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 320px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.tema-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.horario-box {
+  font-size: 28px;
+  margin: 20px 0;
+}
+
+.horario-box button {
+  border: none;
+  background: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.botao-principal {
+  background: var(--c4);
+  color: white;
+  border: none;
+  padding: 15px;
+  width: 100%;
+  border-radius: 15px;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 5px 0 var(--c2);
+  transition: 0.1s;
+}
+
+.botao-principal:active {
+  transform: translateY(5px);
+  box-shadow: none;
+}
+
+.mensagem {
+  margin-top: 20px;
+  font-weight: bold;
+  min-height: 24px;
+}
+
+.contador {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 18px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Modo escuro */
+.dark {
+  background: var(--c1);
+  color: var(--c10);
+}
+
+.dark .container {
+  background: var(--c2);
+  color: var(--c10);
+}
+
+.dark .botao-principal {
+  background: var(--c5);
+  box-shadow: 0 5px 0 var(--c3);
+}
+
+/* Alerta após horário */
+.alerta {
+  background: var(--c6);
+}
+
+/* Animação de piscar */
+@keyframes piscarFundo {
+  0% {
+    background-color: var(--c9);
+  }
+  50% {
+    background-color: var(--c6);
+  }
+  100% {
+    background-color: var(--c9);
+  }
+}
+
+/* Estado de alerta com animação */
+body.alerta {
+  animation: piscarFundo 4s infinite;
+}
+
+body.dark.alerta {
+  animation: piscarFundoEscuro 4s infinite;
+}
+
+@keyframes piscarFundoEscuro {
+  0% {
+    background-color: var(--c1);
+  }
+  50% {
+    background-color: var(--c3);
+  }
+  100% {
+    background-color: var(--c1);
+  }
+}

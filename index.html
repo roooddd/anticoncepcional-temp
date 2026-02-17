@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lembrete</title>
+  <link rel="apple-touch-icon" href="icon.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+  <div class="container">
+
+    <button id="temaBtn" class="tema-btn">🌙</button>
+
+    <h1 id="saudacao">Bom dia</h1>
+
+    <div class="horario-box">
+      <span id="horarioTexto">21:00</span>
+      <button id="editarHorario">✏️</button>
+    </div>
+
+    <input type="time" id="inputHorario" class="hidden" />
+
+    <button id="jaTomei" class="botao-principal">Já tomei!</button>
+
+    <p id="mensagem" class="mensagem"></p>
+
+    <div class="contador" id="contador">
+      🔥 <span id="dias">0</span>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
