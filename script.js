@@ -33,7 +33,7 @@ function atualizarSaudacao() {
 }
 
 function carregarHorario() {
-  const horario = localStorage.getItem("horario") || "21:00";
+  const horario = localStorage.getItem("horario") || "06:00";
   horarioTexto.textContent = horario;
 }
 
