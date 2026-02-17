@@ -9,7 +9,7 @@ const temaBtn = document.getElementById("temaBtn");
 
 const mensagens = [
   "Orgulho de você, amor",
-  "Você é incrível"",
+  "Você é incrível!",
   "Mais um dia certinho!",
   "Arrasou, te amo!",
   "Perfeita como sempre!"
