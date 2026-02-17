@@ -8,11 +8,11 @@ const diasSpan = document.getElementById("dias");
 const temaBtn = document.getElementById("temaBtn");
 
 const mensagens = [
-  "Boa! Orgulho de você 💖",
-  "Você é incrível ✨",
-  "Mais um dia certinho 💊",
-  "Arrasou! 🔥",
-  "Perfeita como sempre 💕"
+  "Orgulho de você, amor",
+  "Você é incrível"",
+  "Mais um dia certinho!",
+  "Arrasou, te amo!",
+  "Perfeita como sempre!"
 ];
 
 function hojeString() {
