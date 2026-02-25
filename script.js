@@ -13,8 +13,8 @@ const mensagens = [
   "Meeeu tuti fruti",
   "Meeeu cuti cuti",
   "Sem pandinha por enquanto",
-  "Fica comigo pra sempre?"
-  "Te amo te amo te amo"
+  "Fica comigo pra sempre?",
+  "Te amo te amo te amo",
   "Eee mulhe gostosona"
 ];
 
