@@ -15,7 +15,12 @@ const mensagens = [
   "Sem pandinha por enquanto",
   "Fica comigo pra sempre?",
   "Te amo te amo te amo",
-  "Eee mulhe gostosona"
+  "Eee mulhe da minha vida",
+  "Te amo mais que tudo",
+  "Você é perfeita",
+  "Te quero o tempo todo",
+  "Vive comigo pra sempre?"
+
 ];
 
 function hojeString() {
@@ -35,9 +40,42 @@ function atualizarSaudacao() {
   }
 }
 
+/* =========================
+   MODO ESCURO PADRÃO
+========================= */
+function aplicarTemaPadrao() {
+  const temaSalvo = localStorage.getItem("tema");
+
+  if (!temaSalvo) {
+    document.body.classList.add("dark");
+    localStorage.setItem("tema", "dark");
+  } else if (temaSalvo === "dark") {
+    document.body.classList.add("dark");
+  }
+}
+
+temaBtn.onclick = () => {
+  document.body.classList.toggle("dark");
+
+  if (document.body.classList.contains("dark")) {
+    localStorage.setItem("tema", "dark");
+  } else {
+    localStorage.setItem("tema", "light");
+  }
+};
+
+/* =========================
+   HORÁRIO PADRÃO 08:00
+========================= */
 function carregarHorario() {
-  const horario = localStorage.getItem("horario") || "08:00";
-  horarioTexto.textContent = horario;
+  const horario = localStorage.getItem("horario");
+
+  if (!horario) {
+    localStorage.setItem("horario", "08:00");
+    horarioTexto.textContent = "08:00";
+  } else {
+    horarioTexto.textContent = horario;
+  }
 }
 
 editarHorario.onclick = () => {
@@ -51,7 +89,19 @@ inputHorario.onchange = () => {
   inputHorario.classList.add("hidden");
 };
 
+/* =========================
+   CONTADOR
+========================= */
+
 function carregarDias() {
+  const inicializado = localStorage.getItem("inicializado");
+
+  // Se for a primeira vez abrindo
+  if (!inicializado) {
+    localStorage.setItem("dias", 8);
+    localStorage.setItem("inicializado", "true");
+  }
+
   const dias = localStorage.getItem("dias") || 0;
   diasSpan.textContent = dias;
 }
@@ -66,7 +116,6 @@ function verificarSequencia() {
   ontem.setDate(ontem.getDate() - 1);
   const ontemStr = ontem.toISOString().split("T")[0];
 
-  // se não foi ontem nem hoje, zera
   if (ultimoDia !== ontemStr && ultimoDia !== hoje) {
     localStorage.setItem("dias", 0);
     diasSpan.textContent = 0;
@@ -103,6 +152,9 @@ botao.onclick = () => {
   document.body.classList.remove("alerta");
 };
 
+/* =========================
+   ALERTA DE HORÁRIO
+========================= */
 function verificarHorario() {
   const agora = new Date();
   const [h, m] = horarioTexto.textContent.split(":");
@@ -118,10 +170,11 @@ function verificarHorario() {
   }
 }
 
-temaBtn.onclick = () => {
-  document.body.classList.toggle("dark");
-};
+/* =========================
+   INICIALIZAÇÃO
+========================= */
 
+aplicarTemaPadrao();
 atualizarSaudacao();
 carregarHorario();
 verificarSequencia();
