@@ -20,7 +20,6 @@ const mensagens = [
   "Você é perfeita",
   "Te quero o tempo todo",
   "Vive comigo pra sempre?"
-
 ];
 
 function hojeString() {
@@ -96,7 +95,6 @@ inputHorario.onchange = () => {
 function carregarDias() {
   const inicializado = localStorage.getItem("inicializado");
 
-  // Se for a primeira vez abrindo
   if (!inicializado) {
     localStorage.setItem("dias", 8);
     localStorage.setItem("inicializado", "true");
@@ -155,6 +153,7 @@ botao.onclick = () => {
 /* =========================
    ALERTA DE HORÁRIO
 ========================= */
+
 function verificarHorario() {
   const agora = new Date();
   const [h, m] = horarioTexto.textContent.split(":");
@@ -167,6 +166,31 @@ function verificarHorario() {
 
   if (agora >= horarioRemedio && ultimoDia !== hoje) {
     document.body.classList.add("alerta");
+  } else {
+    document.body.classList.remove("alerta");
+  }
+}
+
+/* =========================
+   VIRADA DE DIA AUTOMÁTICA
+========================= */
+
+function verificarViradaDeDia() {
+  const ultimoDia = localStorage.getItem("ultimoDia");
+  const hoje = hojeString();
+
+  if (ultimoDia && ultimoDia !== hoje) {
+    const ontem = new Date();
+    ontem.setDate(ontem.getDate() - 1);
+    const ontemStr = ontem.toISOString().split("T")[0];
+
+    if (ultimoDia !== ontemStr) {
+      localStorage.setItem("dias", 0);
+      diasSpan.textContent = 0;
+    }
+
+    botao.classList.remove("hidden");
+    mensagem.textContent = "";
   }
 }
 
@@ -179,7 +203,11 @@ atualizarSaudacao();
 carregarHorario();
 verificarSequencia();
 carregarDias();
+verificarViradaDeDia();
 atualizarEstadoBotao();
 verificarHorario();
 
-setInterval(verificarHorario, 60000);
+setInterval(() => {
+  verificarHorario();
+  verificarViradaDeDia();
+}, 60000);
